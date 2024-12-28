@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, X, ChevronLeft } from 'lucide-react';
+import { Heart, ChevronLeft } from 'lucide-react';
 
 const PaymentLinks = () => {
   const [isOpen, setIsOpen] = useState(false);
