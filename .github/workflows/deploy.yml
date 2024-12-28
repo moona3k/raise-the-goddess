@@ -1,0 +1,53 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/raisethegoddess:latest
+
+      - name: Install SSH key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to DigitalOcean
+        env:
+          HOST: ${{ secrets.DROPLET_HOST }}
+          USERNAME: ${{ secrets.DROPLET_USERNAME }}
+        run: |
+          ssh -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
+            # Pull the latest image
+            docker pull ${{ secrets.DOCKER_USERNAME }}/raisethegoddess:latest
+            
+            # Stop and remove both potential old containers
+            docker stop raisethegoddess-app raisethegoddess-container || true
+            docker rm raisethegoddess-app raisethegoddess-container || true
+            
+            # Run the new container
+            docker run -d \
+              --name raisethegoddess-container \
+              --restart unless-stopped \
+              -p 3333:3333 \
+              ${{ secrets.DOCKER_USERNAME }}/raisethegoddess:latest
+          EOF
