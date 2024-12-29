@@ -121,10 +121,16 @@ const PaymentLinks = () => {
               onClick={() => setIsOpen(true)}
             >
               <div className="relative group cursor-pointer">
-                <div className="absolute -inset-2 bg-pink-500 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition duration-300 animate-pulse"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-pink-500/30 via-emerald-400/70 to-green-400/80 rounded-full blur-3xl opacity-70 group-hover:opacity-90 transition duration-300 animate-pulse"></div>
                 <Heart 
                   size={88} 
                   className="text-pink-500 relative transform transition-all duration-300"
+                  fill="currentColor"
+                  strokeWidth={1.5}
+                />
+                <Heart 
+                  size={33}
+                  className="text-green-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform transition-all duration-300"
                   fill="currentColor"
                   strokeWidth={1.5}
                 />
