@@ -82,28 +82,28 @@ const PaymentLinks = () => {
       color: 'from-blue-400 to-blue-600',
       handle: paymentLinks?.venmo,
       url: `venmo://paycharge?txn=pay&recipients=${paymentLinks?.venmo}`,
-      description: 'Quick & Easy'
+      description: 'Sacred V-Offering'
     },
     {
       name: 'PayPal',
       color: 'from-indigo-600 to-indigo-800',
       handle: paymentLinks?.paypal,
       url: `https://paypal.me/${paymentLinks?.paypal}`,
-      description: 'Secure & Global'
+      description: 'PayPal Your Devotion'
     },
     {
       name: 'Cash App',
       color: 'from-emerald-400 to-emerald-600',
       handle: paymentLinks?.cashapp,
       url: `https://cash.app/$${paymentLinks?.cashapp}`,
-      description: 'Fast & Simple'
+      description: 'Green Light to Grace'
     },
     {
       name: 'Zelle',
       color: 'from-purple-500 to-purple-700',
       handle: paymentLinks?.zelle,
       url: `https://enroll.zellepay.com/${paymentLinks?.zelle}`,
-      description: 'Direct & Instant'
+      description: 'Zellestial Tribute'
     }
   ];
 
@@ -151,7 +151,7 @@ const PaymentLinks = () => {
                 transition={{ delay: 0.1 }}
               >
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-white/90 text-lg font-medium">Choose Your Tribute Method</h2>
+                  <h2 className="text-white/90 text-lg font-medium">Choose Your Divine Offering Path</h2>
                   <motion.button
                     onClick={() => setIsOpen(false)}
                     className="text-pink-500/80 hover:text-pink-500 transition-colors"
