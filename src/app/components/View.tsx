@@ -10,7 +10,7 @@ const PaymentLinks = () => {
   const paymentLinks = {
     venmo: "suzi-chang",
     paypal: "mspink",
-    cashapp: "mspink",
+    cashapp: "chinggiskhan",
     zelle: "mspink"
   };
 
