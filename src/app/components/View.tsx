@@ -8,7 +8,7 @@ const PaymentLinks = () => {
   const [isOpen, setIsOpen] = useState(false);
   
   const paymentLinks = {
-    venmo: "mspink",
+    venmo: "suzi-chang",
     paypal: "mspink",
     cashapp: "mspink",
     zelle: "mspink"
